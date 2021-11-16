@@ -1,13 +1,13 @@
-import {useState}from 'react'
+import {useState} from 'react'
 import SingleBook from './SingleBook'
 import { Col, Container, Form, Row } from 'react-bootstrap'
 import CommentArea from './CommentArea'
 
-const BookList =()=> {
+const BookList =({ books })=> {
 
-    const [searchQuery,setsearchQuery]= usestate("")
+    const [searchQuery,setsearchQuery]= useState("")
     
-    const [selectedBook,setselectedBook]= usestate(null)
+    const [selectedBook,setselectedBook]= useState(null)
     
     
     // state = {
@@ -34,8 +34,9 @@ const BookList =()=> {
                             </Col>
                         </Row>
                         <Row>
+                           
                             {
-                               props.books.filter(b => b.title.toLowerCase().includes(this.state.searchQuery)).map(b => (
+                              books.filter(b => b.title.toLowerCase().includes(searchQuery)).map(b => (
                                     <Col xs={3} key={b.asin} >
                                         <SingleBook
                                             book={b}
